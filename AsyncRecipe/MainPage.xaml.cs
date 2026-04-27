@@ -1,23 +1,12 @@
-﻿using AsyncRecipe.Core;
+﻿namespace AsyncRecipe;
 
-namespace AsyncRecipe
+using AsyncRecipe.ViewModels;
+
+public partial class MainPage : ContentPage
 {
-    public partial class MainPage : ContentPage
+    public MainPage(TodoListViewModel viewModel)
     {
-        public MainPage()
-        {
-            InitializeComponent();
-        }
-
-        async void Button_Clicked(
-            System.Object sender,
-            System.EventArgs e
-        )
-        {
-            var resultTask = new AsyncExample().UIExample();
-            ResultLabel.Text = $"{resultTask.IsCompleted}";
-            var result = await resultTask;
-            ResultLabel.Text = $"{result}";
-        }
+        InitializeComponent();
+        BindingContext = viewModel;
     }
 }
